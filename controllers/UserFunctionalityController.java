@@ -26,8 +26,10 @@ public class UserFunctionalityController {
    * 
    * @param username
    */
-  public void editProfile(String username)
-  {}
+  public int editProfile(User user)
+  {
+   return this.database.editProfile(user);
+  }
   
   /**
    * 

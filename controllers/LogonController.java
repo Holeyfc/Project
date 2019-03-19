@@ -27,34 +27,51 @@ public class LogonController {
    */
   public void login(String username, String password)
   {
+    boolean user = false;
+    boolean pass = false;
+    boolean act = false;
     int bool = 0;
     String[][] users = this.database.getUsers();
+//    for(int i = 0; i < users.length; i++)
+//    {
+//      for(int j = 0; j < users[i].length; j++)
+//      {
+//        System.out.println(users[i][j]);
+//      }
+//    }
     for (int i = 0; i < users.length; i++)
     {
-      if (users[i][2] == username)
+      if (users[i][2].equals(username))
       {
-        if (users[i][3]  == password)
+        user = true;
+        if (users[i][3].equals(password))
         {
-          if (users[i][5] == "a")
+          pass = true;
+          if (users[i][5].equals("Y"))
           {
+            act = true;
             System.out.println("Login successful"); 
             bool++;
           }
-          else
-          {
-            System.out.println("Login unsuccessful because this account is inactive"); 
-          }
         }
-        else
-        {
-          System.out.println("Login unsuccessful because of an incorrect username of password");
-        }
-      }
-      if (bool == 0)
-      {
-                System.out.println("Login unsuccessful because of an incorrect username of password"); 
       }
     }
+    if(user == false)
+    {
+      System.out.println("login unsuccessful because the user wasnt found");
+      return;
+    }
+    if(pass == false)
+    {
+      System.out.println("login unsuccessful due to invalid password");
+      return;
+    }
+    if(act == false)
+    {
+      System.out.println("login unsuccessful due to account being inactive");
+      return;
+    }
+    
   }
   
   //from communication
@@ -63,6 +80,8 @@ public class LogonController {
    * 
    */
   public void logout()
-  {}
+  {
+    System.out.println("successfull logout");
+  }
   
 }

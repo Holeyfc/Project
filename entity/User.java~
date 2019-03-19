@@ -17,7 +17,7 @@ public class User extends Account2{
   public String getLast()
   {return this.lastName;}
   
-  public String setLast(String laster)
+  public void setLast(String laster)
   {this.lastName = laster;}
   
   public String getPassword() {

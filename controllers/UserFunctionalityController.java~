@@ -78,9 +78,9 @@ public class UserFunctionalityController {
   /**
    * 
    */
-  public void login(String username, String password, Character type)
+  public void login(String username, String password)
   {
-    this.logger.login(username, password, type);
+    this.logger.login(username, password);
   }
   
 }
