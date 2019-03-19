@@ -15,9 +15,10 @@ public class Admin extends Account2
   public String userName;
   private char type;
   private char status;
+  
   AdminFunctionalityController afc;
   UniversityController uc;
-  AdminUI adUI;
+  //AdminUI adUI;
   
   /**
    * creating an admin account
@@ -25,19 +26,19 @@ public class Admin extends Account2
    * @param password the password of the account
    * param type the account type, admin or student
    */
-  public Admin(String userName, String password, char type) 
+  public Admin() 
   {
-    Account2 admin = Account2(this.userName, this.password, this.type);
+ log = new LogonController();
   }
   
   /**
    * logout of the account
    * @param admin the account to be log out
    */
-  public void logout(Admin admin)
+  public void logout()
   {
     //log out of the account
-    this.afc.logout(admin);
+     log.logout();
   }
   
   /**
@@ -46,19 +47,21 @@ public class Admin extends Account2
    * @param password the password
    * @param type the accoun't type, admin or student
    */
-  public void login(String userName, String password, char type)
+  public void login()
   {
-    this.afc.login(userName, password, type);
+    
+    this.afc.login("holeyfan", "csci230");
   }
   
   /**
    * view the list of universities
    * @param university the universities to view
    */
-  public void viewUniversities(University university)
+  public void viewUniversities()
   {
+    
     //view the university
-   this.uc.viewUniversity(university);
+   //this.uc.viewUniversity("BARD");
     
   }
   
@@ -68,7 +71,7 @@ public class Admin extends Account2
   public void viewUsers()
   {
     //view the list of users
-   this.adUI.viewListOfUsers();
+    //this.adUI.viewListOfUsers();
     
   }
   
@@ -76,8 +79,9 @@ public class Admin extends Account2
    * add a new user
    * @param user the user
    */
-  public void addNewUser(User user)
+  public void addNewUser()
   {
+    User user = new User("lUser");
     //add a new user
     this.afc.addNewUser(user);
   }
@@ -86,38 +90,40 @@ public class Admin extends Account2
    * reset the user's password
    * @param user the account's password to be change
    */
-  public void resetPassword(String userName, String newPassword)
+  public void resetUserPassword()
   {
-    this.afc.resetUsersPassword(userName,newPassword);
+    this.afc.resetUsersPassword("jUser", "lpassword");
     
   }
   
   /**
    * add a new university
    */
-  public void addNewUniversity(University university)
+  public void addNewUniversity()
   {
+    University sPC = new University("SAINT PAUL COLLEGE");
     //add a new university
-    this.afc.addNewUniversity(university);
+    this.afc.addNewUniversity(sPC);
 
   }
   
   /**
    * edit the information of the university
    */
-  public void editUniversityInfo(University university)
+  public void editUniversityInfo()
   {
     //edit a university's information
-    this.afc.editUniversity(university);
+    
+    this.afc.editUniversity("BROWN");
   }
   
   /**
    * delete school
    */
-  public void deleteUniversity(String university)
+  public void deleteSchool()
   {
     //delete the university
-    this.afc.deleteUniversity(university);
+    this.afc.deleteUniversity("SAINT PAUL COLLEGE");
     
   }
   
