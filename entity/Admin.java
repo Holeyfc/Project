@@ -20,10 +20,10 @@ public class Admin {
   AdminFunctionalityController afc;
   
   public Admin() {
-    // TODO Auto-generated constructor stub
+    
   }
   
-  public void logOut()
+  public void logout()
   {}
   
   /**

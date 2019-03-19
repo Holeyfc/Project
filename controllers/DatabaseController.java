@@ -16,7 +16,7 @@ public class DatabaseController {
   private UniversityDBLibrary dbLibrary;
   
   public DatabaseController() {
-    this.dbLibrary = new UniversityDBLibrary("Holeyfc", "holeyfan230");
+    this.dbLibrary = new UniversityDBLibrary("Holeyfan", "csci230");
   }
   
   /**
@@ -27,12 +27,25 @@ public class DatabaseController {
     return this.dbLibrary.user_addUser(user.getFirst(), user.getLast(), user.getUsername(), user.getPassword(), user.getType()); //needs getters
   }
   
+  
+  /**
+   * UC19
+   */
+  public int deleteUser(String username)
+  {
+  return this.dbLibrary.user_deleteUser(username);
+  }
+    
+  
   /**
    * UC12
    */
   public int addUniversity(University uni)
   {
-    return dbLibrary.university_addUniversity(uni); //needs getters
+    return dbLibrary.university_addUniversity(uni.getName(), uni.getState(), uni.getLocation(), uni.getControl(), uni.getNumOfStudents(), 
+                                              uni.getPercentFemale(), uni.getSatVerbal(), uni.getSatMath(), uni.getExpenses(), uni.getFinAid()
+                                              , uni.getNumApplicants(), uni.getPerAdmitted(), uni.getPerEnrolled(),
+                                              uni.getAcademicScale(),  uni.getSocialScale(), uni.getLifeScale()); 
   }
   
   /**
@@ -82,7 +95,10 @@ public class DatabaseController {
   
   public int editUniversity(University uni) 
   {
-    return this.dbLibrary.univeristy_editUniversity(uni); //needs getters
+    return dbLibrary.university_editUniversity(uni.getName(), uni.getState(), uni.getLocation(), uni.getControl(), uni.getNumOfStudents(), 
+                                              uni.getPercentFemale(), uni.getSatVerbal(), uni.getSatMath(), uni.getExpenses(), uni.getFinAid()
+                                              , uni.getNumApplicants(), uni.getPerAdmitted(), uni.getPerEnrolled(),
+                                              uni.getAcademicScale(),  uni.getSocialScale(), uni.getLifeScale()); 
   }
   
   /**
@@ -90,7 +106,7 @@ public class DatabaseController {
    * @param username
    * @param password
    */
-  public int editUser(String username, String password)
+  public int changePassword(String username, String password)
   {
     String[][] users = this.dbLibrary.user_getUsers();
     for (int i = 0; i < users.length; i ++)
@@ -100,6 +116,7 @@ public class DatabaseController {
         users[i][3] = password;
       }
     }
+    return 0;
   }
   
   /**

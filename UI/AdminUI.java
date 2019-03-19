@@ -69,6 +69,18 @@ public class AdminUI extends Admin {
   /**
    * 
    */
+  public void deleteUser(String username)
+  {
+  int passFail = this.adFuncController.deleteUser(username);
+      if(passFail == 0)
+    {System.out.println("Your attempt to delete a user was successful");}
+    else
+    {System.out.println("Your attmept to delete a user failed");}
+  }
+  
+  /**
+   * 
+   */
   public void changePassword(String username, String password)
   {
     this.adFuncController.resetUsersPassword(username, password);
@@ -90,8 +102,8 @@ public class AdminUI extends Admin {
   /**
    * 
    */
-  public void login(String username, String password, Character type)
+  public void login(String username, String password)
   {
-    this.adFuncController.login(username, password, type);
+    this.adFuncController.login(username, password);
   }
 }

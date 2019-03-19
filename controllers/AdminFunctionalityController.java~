@@ -89,14 +89,14 @@ public class AdminFunctionalityController {
    */
   public void logout()
   {
-  this.logger.logout();
+    this.logger.logout();
   }
-    
+  
   /**
    * 
    */
-  public void login(String username, String password)
+  public void login(String username, String password, Character type)
   {
-  this.logger.login(username, password);
+    this.logger.login(username, password, type);
   }
 }

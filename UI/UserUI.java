@@ -42,9 +42,9 @@ public class UserUI
   /**
    * 
    */
-  public void login(String username, String password, Character type)
+  public void login(String username, String password)
   {
-    this.user.login(username, password, type);
+    this.user.login(username, password);
   }
   
   /**

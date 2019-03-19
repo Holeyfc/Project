@@ -24,7 +24,7 @@ public class DatabaseController {
    */
   public int addUser(User user) 
   {
-    return this.dbLibrary.user_addUser(user); //needs getters
+    return this.dbLibrary.user_addUser(user.getFirst(), user.getLast(), user.getUsername(), user.getPassword(), user.getType()); //needs getters
   }
   
   /**
@@ -49,7 +49,7 @@ public class DatabaseController {
   {
     return this.dbLibrary.user_getUsers();
   }
-    
+  
   /**
    * UC9?
    */
@@ -97,7 +97,7 @@ public class DatabaseController {
     {
       if (users[i][2] == username)
       {
-      users[i][3] = password;
+        users[i][3] = password;
       }
     }
   }
@@ -113,11 +113,11 @@ public class DatabaseController {
   /**
    * 
    */
-    public int removeUniversityFromUser(String username, String uniName)
+  public int removeUniversityFromUser(String username, String uniName)
   {
     return this.dbLibrary.user_removeSchool(username, uniName);
   }
-    
+  
   /**
    * UC8
    */
