@@ -27,9 +27,13 @@ public class SearchController {
    */
   public void searchResults()
   {
-    if(this.found = true)
+    if(this.found == true)
     {
       System.out.println("school " + name + " found.");
+    }
+    else if(name == null)
+    {
+      System.out.println("please press search before you press search results");
     }
     else
     {

@@ -8,46 +8,74 @@ package controllers;
  *
  */
 public class SearchController {
-
-	/**
-	 * 
-	 */
-<<<<<<< HEAD
-	
-	public DatabaseController database;
-	
-	public SearchController() {
-		this.database = new DatabaseController();
-=======
-	public SearchController() {
-		// TODO Auto-generated constructor stub
->>>>>>> 279b2460967aa8a3f7afada76c9163d896eb0c62
-	}
-
-	/**
-	 * 
-	 */
-	public void searchResults()
-	{}
-	
-	/**
-	 * 
-	 */
-	public void searchUniversities()
-	{}
-	
-	/**
-	 * 
-	 */
-	public void getUniversities()
-	{}
-	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+  
+  /**
+   * 
+   */
+  
+  
+  public DatabaseController database;
+  public boolean found;
+  public String name;
+  
+  public SearchController()
+  {
+    this.database = new DatabaseController();
+  }
+  /**
+   * 
+   */
+  public void searchResults()
+  {
+    if(this.found = true)
+    {
+      System.out.println("school " + name + " found.");
+    }
+    else
+    {
+      System.out.println("school " + name + " not found in database.");
+    }
+  }
+  
+  /**
+   * 
+   */
+  public void searchUniversities(String name)
+  {
+    found = false;
+    this.name = name;
+    String[][] university = database.getListOfUniversities();
+    for(int i = 0; i < university.length; i++)
+    {
+      if(university[i][0].equals(name))
+      {
+        found = true;
+      }
+    }
+  }
+  
+  public void viewUniversity(String name)
+  {
+    String[][] university = database.getListOfUniversities();
+    for(int i = 0; i < university.length; i++)
+    {
+      if(university[i][0].equals(name))
+      {
+        for(int j = 0; j < university[i].length; j++)
+        {
+          System.out.println(university[i][j]);
+        }
+      }
+    }
+  }
+  
+  /**
+   * 
+   */
+  public void getUniversities()
+  {}
+  
+  /**
+   * @param args
+   */
 }
