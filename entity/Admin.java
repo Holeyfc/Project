@@ -18,9 +18,10 @@ public class Admin extends Account2
   
   AdminFunctionalityController afc;
   UniversityController uc;
+  DatabaseController lib;
   //AdminUI adUI;
   
-<<<<<<< HEAD
+  
   /**
    * creating an admin account
    * @param userName the user name
@@ -29,18 +30,9 @@ public class Admin extends Account2
    */
   public Admin() 
   {
- log = new LogonController();
+    log = new LogonController();
   }
   
-=======
-  public Admin() {
-    
-  }
-  
-  public void logout()
-  {}
-  
->>>>>>> c137dac61e9a4365c71516e150aad2b0883005f7
   /**
    * logout of the account
    * @param admin the account to be log out
@@ -48,7 +40,7 @@ public class Admin extends Account2
   public void logout()
   {
     //log out of the account
-     log.logout();
+    log.logout();
   }
   
   /**
@@ -60,7 +52,7 @@ public class Admin extends Account2
   public void login()
   {
     
-    this.afc.login("holeyfan", "csci230");
+    this.afc.login("nadmin", "jpass");
   }
   
   /**
@@ -70,8 +62,14 @@ public class Admin extends Account2
   public void viewUniversities()
   {
     
-    //view the university
-   //this.uc.viewUniversity("BARD");
+    String[][] schools = this.lib.getListOfUniversities();
+    for(int i = 0; i < schools.length; i++)
+    {
+      for(int j = 0; j < schools[i].length; j++)
+      {
+        System.out.println(schools[i][j]);
+      }
+    }
     
   }
   
@@ -80,11 +78,16 @@ public class Admin extends Account2
    */
   public void viewUsers()
   {
-    //view the list of users
-    //this.adUI.viewListOfUsers();
-    
+    String[][] users = this.lib.getUsers();
+    for(int i = 0; i < users.length; i++)
+    {
+      for(int j = 0; j < users[i].length; j++)
+      {
+        System.out.println(users[i][j]);
+      }
+      
+    }
   }
-  
   /**
    * add a new user
    * @param user the user
@@ -92,6 +95,7 @@ public class Admin extends Account2
   public void addNewUser()
   {
     User user = new User("lUser");
+    
     //add a new user
     this.afc.addNewUser(user);
   }
@@ -102,8 +106,8 @@ public class Admin extends Account2
    */
   public void resetUserPassword()
   {
-    this.afc.resetUsersPassword("jUser", "lpassword");
-    
+    this.afc.resetUsersPassword("juser", "lpassword");
+    System.out.print("Password has been changed.");
   }
   
   /**
@@ -112,9 +116,10 @@ public class Admin extends Account2
   public void addNewUniversity()
   {
     University sPC = new University("SAINT PAUL COLLEGE");
+    
     //add a new university
-    this.afc.addNewUniversity(sPC);
-
+    this.lib.addNewUniversity(sPC);
+    
   }
   
   /**
@@ -123,8 +128,8 @@ public class Admin extends Account2
   public void editUniversityInfo()
   {
     //edit a university's information
-    
     this.afc.editUniversity("BROWN");
+    System.out.print("University information has been update.");
   }
   
   /**
@@ -134,7 +139,7 @@ public class Admin extends Account2
   {
     //delete the university
     this.afc.deleteUniversity("SAINT PAUL COLLEGE");
-    
+    System.out.print("University has been deleted.");
   }
   
   /**
@@ -142,8 +147,7 @@ public class Admin extends Account2
    */
   public void saveSchoolSearchStatistics()
   {
-    
-    
+
   }
   
   /**
@@ -151,7 +155,8 @@ public class Admin extends Account2
    */
   public void deleteUser()
   {
-    
+    afc.deleteUser("lUser");
+    System.out.print("The user has been deleted.");
   }
   
   
@@ -160,11 +165,17 @@ public class Admin extends Account2
    */
   public void viewProfile()
   {
+    String[][] users = this.lib.getUsers();
+    for(int i = 0; i < users.length; i++)
+    {
+      for(int j = 0; j < users[i].length; j++)
+      {
+        System.out.println(users[i][j]);
+      }
+      
+    }
     
-    System.out.println("username: " + username + " password: " + password + " type: " + type + " status: " + status);
+    
     
   }
-  
-  
-  
 }
