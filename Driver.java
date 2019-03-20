@@ -181,7 +181,7 @@ public class Driver implements ActionListener{
     }
     else if(this.uc15 == event.getSource())
     {
-      account2.sortUniversityByCriteria();
+      admin.saveSchoolSearchStatistics();
     }
     else if(this.uc16 == event.getSource())
     {
