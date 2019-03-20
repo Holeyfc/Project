@@ -23,8 +23,9 @@ public class LogonController {
    * 
    * @param username
    * @param password
+   * @param type is either active or inactive
    */
-  public void login(String username, String password)
+  public void login(String username, String password, Character type)
   {
     
   }

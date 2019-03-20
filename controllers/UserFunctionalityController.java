@@ -26,8 +26,10 @@ public class UserFunctionalityController {
    * 
    * @param username
    */
-  public void editProfile(String username)
-  {}
+  public int editProfile(User user)
+  {
+   return this.database.editProfile(user);
+  }
   
   /**
    * 
@@ -78,9 +80,9 @@ public class UserFunctionalityController {
   /**
    * 
    */
-  public void login(String username, String password, Character type)
+  public void login(String username, String password)
   {
-    this.logger.login(username, password, type);
+    this.logger.login(username, password);
   }
   
 }

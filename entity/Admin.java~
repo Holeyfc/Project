@@ -3,6 +3,7 @@
  */
 package entity;
 import UI.*;
+import controllers.*;
 
 /**
  * @author HoleyFanClub
@@ -16,6 +17,7 @@ public class Admin {
   public String username;
   private char type;
   private char status;
+  AdminFunctionalityController afc;
   
   public Admin() {
     // TODO Auto-generated constructor stub

@@ -72,7 +72,6 @@ public class LogonController {
       return;
     }
     
-    
   }
   
   //from communication

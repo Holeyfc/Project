@@ -1,5 +1,6 @@
 package UI;
 import controllers.*;
+import entity.*;
 /**
  * @author holyfan
  * @version 1.0
@@ -24,11 +25,17 @@ public class UserUI
   {
   }
   
+  /**
+   * 
+   */
   public void searchForUser(String username)
   {
     this.user.searchForUser(username);
   }
   
+  /**
+   * 
+   */
   public void saveSchool(String username, String uniName)
   {
     int passFail = this.user.saveSchool(username, uniName);
@@ -42,9 +49,26 @@ public class UserUI
   /**
    * 
    */
-  public void login(String username, String password, Character type)
+ // public void viewProfile()
+ // {
+ // 
+ /// }
+  
+  /**
+   * 
+   */
+  public int editProfile(User user)
   {
-    this.user.login(username, password, type);
+   return this.user.editProfile(user);
+  }
+  
+  
+  /**
+   * 
+   */
+  public void login(String username, String password)
+  {
+    this.user.login(username, password);
   }
   
   /**

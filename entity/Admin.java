@@ -20,6 +20,7 @@ public class Admin extends Account2
   UniversityController uc;
   //AdminUI adUI;
   
+<<<<<<< HEAD
   /**
    * creating an admin account
    * @param userName the user name
@@ -31,6 +32,15 @@ public class Admin extends Account2
  log = new LogonController();
   }
   
+=======
+  public Admin() {
+    
+  }
+  
+  public void logout()
+  {}
+  
+>>>>>>> c137dac61e9a4365c71516e150aad2b0883005f7
   /**
    * logout of the account
    * @param admin the account to be log out
