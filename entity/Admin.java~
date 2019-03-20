@@ -1,6 +1,3 @@
-/**
- * 
- */
 package entity;
 import UI.*;
 import controllers.*;
@@ -10,89 +7,175 @@ import controllers.*;
  * @version 2.0
  *
  */
-public class Admin {
+public class Admin extends Account2
+{
   
   
   private String password;
-  public String username;
+  public String userName;
   private char type;
   private char status;
-  AdminFunctionalityController afc;
   
-  public Admin() {
-    // TODO Auto-generated constructor stub
+  AdminFunctionalityController afc;
+  UniversityController uc;
+  DatabaseController lib;
+  //AdminUI adUI;
+  
+  
+  /**
+   * creating an admin account
+   * @param userName the user name
+   * @param password the password of the account
+   * param type the account type, admin or student
+   */
+  public Admin() 
+  {
+    log = new LogonController();
   }
   
-  public void logOut()
-  {}
-  
   /**
-   * 
-   * @param username
-   * @param password
+   * logout of the account
+   * @param admin the account to be log out
    */
-  public void login(String username, String password)
-  {}
+  public void logout()
+  {
+    //log out of the account
+    log.logout();
+  }
   
   /**
-   * 
-   * @param firstname
-   * @param lastname
-   * @param username
-   * @param password
-   * @param type
+   * login to the account
+   * @param userName the userName
+   * @param password the password
+   * @param type the accoun't type, admin or student
    */
-  public void userInfo(String firstname, String lastname, String username, String password, Character type)
-  {}
+  public void login()
+  {
+    
+    this.afc.login("nadmin", "jpass");
+  }
   
   /**
-   * 
+   * view the list of universities
+   * @param university the universities to view
    */
   public void viewUniversities()
   {
-  }
-  
-  public void viewUsers()
-  {
-    AdminUI adUI = new AdminUI();
-    adUI.viewListOfUsers();
-  }
-  
-  public void addNewUser()
-  {
-  }
-  
-  public void resetUserPassword()
-  {
-  }
-  
-  public void addNewUniversity()
-  {
-  }
-  
-  public void editUniversityInfo()
-  {
-  }
-  
-  public void deleteSchool()
-  {
-  }
-  public void saveSchoolSearchStatistics()
-  {
-  }
-  
-  public void deleteUser()
-  {
+    
+    String[][] schools = this.lib.getListOfUniversities();
+    for(int i = 0; i < schools.length; i++)
+    {
+      for(int j = 0; j < schools[i].length; j++)
+      {
+        System.out.println(schools[i][j]);
+      }
+    }
+    
   }
   
   /**
-   * 
+   * view the list of user
    */
-  public void viewProfile()
+  public void viewUsers()
   {
-    System.out.println("username: " + username + " password: " + password + " type: " + type + " status: " + status); 
+    String[][] users = this.lib.getUsers();
+    for(int i = 0; i < users.length; i++)
+    {
+      for(int j = 0; j < users[i].length; j++)
+      {
+        System.out.println(users[i][j]);
+      }
+      
+    }
+  }
+  /**
+   * add a new user
+   * @param user the user
+   */
+  public void addNewUser()
+  {
+    User user = new User("lUser");
+    
+    //add a new user
+    this.afc.addNewUser(user);
+  }
+  
+  /**
+   * reset the user's password
+   * @param user the account's password to be change
+   */
+  public void resetUserPassword()
+  {
+    this.afc.resetUsersPassword("juser", "lpassword");
+    System.out.print("Password has been changed.");
+  }
+  
+  /**
+   * add a new university
+   */
+  public void addNewUniversity()
+  {
+    University sPC = new University("SAINT PAUL COLLEGE");
+    
+    //add a new university
+    this.lib.addNewUniversity(sPC);
+    
+  }
+  
+  /**
+   * edit the information of the university
+   */
+  public void editUniversityInfo()
+  {
+    //edit a university's information
+    this.afc.editUniversity("BROWN");
+    System.out.print("University information has been update.");
+  }
+  
+  /**
+   * delete school
+   */
+  public void deleteSchool()
+  {
+    //delete the university
+    this.afc.deleteUniversity("SAINT PAUL COLLEGE");
+    System.out.print("University has been deleted.");
+  }
+  
+  /**
+   * save the statistic of school searched  
+   */
+  public void saveSchoolSearchStatistics()
+  {
+
+  }
+  
+  /**
+   * delete user's account
+   */
+  public void deleteUser()
+  {
+    afc.deleteUser("lUser");
+    System.out.print("The user has been deleted.");
   }
   
   
-  
+  /**
+   * view the profile of an account
+   */
+  public void viewProfile()
+  {
+    String[][] users = this.lib.getUsers();
+    for(int i = 0; i < users.length; i++)
+    {
+      for(int j = 0; j < users[i].length; j++)
+      {
+        System.out.println(users[i][j]);
+      }
+      
+    }
+    
+    
+    
+  }
 }

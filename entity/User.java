@@ -9,7 +9,18 @@ public class User extends Account2{
   public String username, firstName, lastName;
   private char type;
   private char status;
-  UserUI userUI;
+  UI.UserUI userUI;
+  
+  
+  public User(String firstName, String lastName, String username, String password, char type, char status)
+  {
+    this.username = username;
+    this.password = password;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.type = type;
+    this.status = status;
+  }
   
   public String getFirst()
   {return this.firstName;}

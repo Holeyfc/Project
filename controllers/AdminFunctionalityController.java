@@ -3,6 +3,7 @@
  */
 package controllers;
 import entity.*;
+import controllers.*;
 
 /**
  * @author nhoberg001
@@ -21,6 +22,10 @@ public class AdminFunctionalityController {
     this.database = new DatabaseController();
   }
   
+  public void deactivateUser()
+  {
+    this.database.editUser();
+  }
   /**
    * 
    */

@@ -16,7 +16,7 @@ public class DatabaseController {
   private UniversityDBLibrary dbLibrary;
   
   public DatabaseController() {
-    this.dbLibrary = new UniversityDBLibrary("Holeyfan", "csci230");
+    this.dbLibrary = new UniversityDBLibrary("holeyfan", "csci230");
   }
   
   /**
@@ -35,6 +35,12 @@ public class DatabaseController {
     return this.dbLibrary.user_editUser(user.getUsername(), user.getFirst(), user.getLast(),
                                  user.getPassword(), user.getType(), user.getStatus());
   }
+  
+  public void editUser()
+  {
+    this.dbLibrary.user_editUser("user" , "first", "last", "pass" , 'u', 'N');
+  }
+  
   
   
   /**
@@ -150,6 +156,13 @@ public class DatabaseController {
   public int saveSchool(String username, String uniName)
   {
     return this.dbLibrary.user_saveSchool(username, uniName);
+  }
+  
+  //UC21
+  
+  public void editProfile()
+  {
+    this.dbLibrary.user_editUser("user", "first2" , "last" ,"pass" , 'u' , 'Y');
   }
   
 }

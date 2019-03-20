@@ -1,4 +1,6 @@
 package entity;
+import controllers.*;
+import UI.*;
 //@Author HoleyFanClub
 //@version 1.0
 public class User extends Account2{
@@ -7,6 +9,7 @@ public class User extends Account2{
   public String username, firstName, lastName;
   private char type;
   private char status;
+  UserUI userUI;
   
   public String getFirst()
   {return this.firstName;}
@@ -48,6 +51,19 @@ public class User extends Account2{
   public void viewProfile()
   {
     System.out.println("username: " + username + " password: " + password + " type: " + type + " status: " + status); 
+  }
+  
+  public void editProfile()
+  {
+  int j = this.userUI.editProfile(this);
+  if (j == 0)
+  {
+  System.out.println("Your attempt to edit your profile was sucessful");
+  }
+  else
+  {
+  System.out.println("Your attempt to edit your profile was unsucessful");
+  }
   }
   
   

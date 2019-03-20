@@ -27,6 +27,15 @@ public class DatabaseController {
     return this.dbLibrary.user_addUser(user.getFirst(), user.getLast(), user.getUsername(), user.getPassword(), user.getType()); //needs getters
   }
   
+  /**
+   * 
+   */
+  public int editProfile(User user)
+  {
+    return this.dbLibrary.user_editUser(user.getUsername(), user.getFirst(), user.getLast(),
+                                 user.getPassword(), user.getType(), user.getStatus());
+  }
+  
   
   /**
    * UC19

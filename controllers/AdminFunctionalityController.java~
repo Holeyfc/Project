@@ -47,6 +47,15 @@ public class AdminFunctionalityController {
     return this.database.addUser(user);
   }
   
+  
+  /**
+   * 
+   */
+  public int deleteUser(String username)
+  {
+   return this.database.deleteUser(username);
+  }
+  
   /**
    * 
    * @param username
@@ -62,7 +71,7 @@ public class AdminFunctionalityController {
    */
   public void resetUsersPassword(String username, String newPassword)
   {
-    this.database.editUser(username, newPassword);  
+    this.database.changePassword(username, newPassword);  
   }
   
   /**
@@ -95,8 +104,8 @@ public class AdminFunctionalityController {
   /**
    * 
    */
-  public void login(String username, String password, Character type)
+  public void login(String username, String password)
   {
-    this.logger.login(username, password, type);
+    this.logger.login(username, password);
   }
 }

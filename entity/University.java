@@ -18,6 +18,10 @@ public class University extends UniversityController
    * get the details of the university given in the parameter
    * @param name
    */
+  public University(String name)
+  {
+    this.name = name;
+  }
   public void getDetails(String name)
   {
   }

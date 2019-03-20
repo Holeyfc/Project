@@ -112,6 +112,11 @@ public class Account2 {
          }
     }
   }
+  public void editProfile()
+  {
+    this.lib.editProfile();
+    System.out.println("user first has changed to user first2");
+  }
   
 }
 

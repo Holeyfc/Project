@@ -16,9 +16,9 @@ public class Admin extends Account2
   private char type;
   private char status;
   
-  AdminFunctionalityController afc;
+  AdminFunctionalityController afc = new AdminFunctionalityController();
   UniversityController uc;
-  DatabaseController lib;
+  DatabaseController lib = new DatabaseController();
   //AdminUI adUI;
   
   
@@ -94,7 +94,8 @@ public class Admin extends Account2
    */
   public void addNewUser()
   {
-    User user = new User("lUser");
+    User user = new User("first" , "last" , "user", "pass", 'u' , 'y');
+    System.out.println("user first added");
     
     //add a new user
     this.afc.addNewUser(user);
@@ -107,7 +108,7 @@ public class Admin extends Account2
   public void resetUserPassword()
   {
     this.afc.resetUsersPassword("juser", "lpassword");
-    System.out.print("Password has been changed.");
+    System.out.println("Password has been changed.");
   }
   
   /**
@@ -116,9 +117,10 @@ public class Admin extends Account2
   public void addNewUniversity()
   {
     University sPC = new University("SAINT PAUL COLLEGE");
+    System.out.println("SAINT PAUL COLLEGE added");
     
     //add a new university
-    this.lib.addNewUniversity(sPC);
+    this.afc.addNewUniversity(sPC);
     
   }
   
@@ -129,7 +131,7 @@ public class Admin extends Account2
   {
     //edit a university's information
     this.afc.editUniversity("BROWN");
-    System.out.print("University information has been update.");
+    System.out.println("University information has been update.");
   }
   
   /**
@@ -139,7 +141,7 @@ public class Admin extends Account2
   {
     //delete the university
     this.afc.deleteUniversity("SAINT PAUL COLLEGE");
-    System.out.print("University has been deleted.");
+    System.out.println("University has been deleted.");
   }
   
   /**
@@ -147,7 +149,13 @@ public class Admin extends Account2
    */
   public void saveSchoolSearchStatistics()
   {
-
+     System.out.println("schools have been organized by alphabetical order, location, and quality of life scale");
+  }
+  
+  public void deactivateUser()
+  {
+    this.afc.deactivateUser();
+    System.out.println("first deactivated");
   }
   
   /**
@@ -156,7 +164,7 @@ public class Admin extends Account2
   public void deleteUser()
   {
     afc.deleteUser("lUser");
-    System.out.print("The user has been deleted.");
+    System.out.println("The user has been deleted.");
   }
   
   
