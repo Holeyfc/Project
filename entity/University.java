@@ -1,5 +1,4 @@
 package entity;
-import dblibrary.project.csci230.*;
 import controllers.*;
 /**
  * @author holeyfan
@@ -12,15 +11,33 @@ public class University extends UniversityController
   public int numOfStudents, numApplicants;
   public double finAid, perAdmitted, percentFemale, satVerbal, satMath, expenses, perEnrolled;
   public int academicScale, socialScale, lifeScale;
+  public boolean isSaved;
   
   
   /**
    * get the details of the university given in the parameter
    * @param name
    */
-  public University(String name)
+  public University(String name, String state, String location, String control, int numOfStudents, double percentFemale,
+		  double satVerbal, double satMath, double expenses, double finAid, int numApplicants, double perAdmitted,
+		  double perEnrolled, int academicScale, int socialScale, int lifeScale)
   {
     this.name = name;
+    this.state = state;
+    this.location = location;
+    this.control = control;
+    this.numOfStudents = numOfStudents;
+    this.percentFemale = percentFemale;
+    this.satVerbal = satVerbal;
+    this.satMath = satMath;
+    this.expenses = expenses;
+    this.finAid = finAid;
+    this.numApplicants = numApplicants;
+    this.perAdmitted = perAdmitted;
+    this.perEnrolled = perEnrolled;
+    this.academicScale = academicScale;
+    this.socialScale = socialScale;
+    this.lifeScale = lifeScale;
   }
   public void getDetails(String name)
   {
@@ -189,9 +206,24 @@ public class University extends UniversityController
   {
   return this.lifeScale;
   }
-  public void setLifeScale()
+  public void setLifeScale(int lifeScale)
   {
   this.lifeScale = lifeScale;
+  }
+  
+  public boolean getSavedStatus()
+  {
+	  return this.isSaved;
+  }
+  
+  public void setSavedTrue()
+  {
+	  this.isSaved = true;
+  }
+  
+  public void setSavedFalse()
+  {
+	  this.isSaved = false;
   }
   
 }

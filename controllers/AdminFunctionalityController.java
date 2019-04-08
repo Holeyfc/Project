@@ -22,14 +22,31 @@ public class AdminFunctionalityController {
     this.database = new DatabaseController();
   }
   
-  public void deactivateUser()
+  /**
+   * 
+   * @param user
+   */
+  public void deactivateUser(Account2 user)
   {
-    this.database.editUser();
+    this.database.deactivateUser(user);
   }
+  
   /**
    * 
    */
-  
+  public void editUser(Account2 user)
+  {
+	  
+	    String[][] users = this.database.getListOfUniversities();
+	    for(int i = 0; i < users.length; i++)
+	    {
+	    	if(user.getUsername() == users[i][2])
+	    	{
+	    		throw new IllegalArgumentException();
+	    		//username is not unique
+	    	}
+	    } 
+  }
   /**
    * java.lang.String school, java.lang.String state, java.lang.String location,
    java.lang.String control, int numberOfStudents, double percentFemales, double SATVerbal, double SATMath,
@@ -39,7 +56,15 @@ public class AdminFunctionalityController {
   
   public void addNewUniversity(University university)
   {
-    this.database.addUniversity(university);
+    String[][] unis = this.database.getListOfUniversities();
+    for(int i = 0; i < unis.length; i++)
+    {
+    	if(university.getName() == unis[i][0])
+    	{
+    		throw new IllegalArgumentException();
+    	}
+    }
+	  this.database.addUniversity(university);
   }
   
   /**
@@ -49,6 +74,14 @@ public class AdminFunctionalityController {
    */
   public int addNewUser(User user) //necessimos paramatinos
   {
+	    String[][] users = this.database.getUsers();
+	    for(int i = 0; i < users.length; i++)
+	    {
+	    	if(user.getUsername() == users[i][2])
+	    	{
+	    		throw new IllegalArgumentException();
+	    	}
+	    }
     return this.database.addUser(user);
   }
   
@@ -65,8 +98,10 @@ public class AdminFunctionalityController {
    * 
    * @param username
    */
-  public void editUniversity(String username) //necessimos paramatinos
-  {}
+  public void editUniversity(University uni) 
+  {
+	  this.database.editUniversity(uni);
+  }
   
   /**
    * 
@@ -80,7 +115,7 @@ public class AdminFunctionalityController {
   }
   
   /**
-   * UC16
+   * UC16 if uni is not saved
    * @param uniName
    */
   public int deleteUniversity(String uniName)
@@ -89,7 +124,7 @@ public class AdminFunctionalityController {
   }
   
   /**
-   * 
+   * For view List of users
    * @return
    */
   
@@ -99,7 +134,7 @@ public class AdminFunctionalityController {
   }
   
   /**
-   * 
+   * should test isLoggedIn, true = logger.logout, false = exception
    */
   public void logout()
   {

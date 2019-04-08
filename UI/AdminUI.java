@@ -25,8 +25,16 @@ public class AdminUI extends Admin {
     
     System.out.println("Successful Login!");
   }
+
+  public void addNewUniversity(University uni)
+  {
+	  this.adFuncController.addNewUniversity(uni);
+  }
   
-  
+  public void editUniversity(University uni)
+  {
+	  this.adFuncController.editUniversity(uni);    
+  }
   /**
    * Confirms that there is no account or the user or password is incorrect
    */
@@ -76,6 +84,14 @@ public class AdminUI extends Admin {
     {System.out.println("Your attempt to delete a user was successful");}
     else
     {System.out.println("Your attmept to delete a user failed");}
+  }
+  
+  /**
+   * 
+   */
+  public void deactivateUser(Account2 user)
+  {
+    this.adFuncController.deactivateUser(user);
   }
   
   /**

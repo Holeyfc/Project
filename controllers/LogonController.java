@@ -13,12 +13,9 @@ public class LogonController {
   UserFunctionalityController UFC;
   AdminFunctionalityController AFC;
   
-  public DatabaseController database;
+  public DatabaseController database = new DatabaseController();
   
-  public LogonController() {
-    this.database = new DatabaseController();
-  }
-  
+
   /**
    * UC1
    * @param username

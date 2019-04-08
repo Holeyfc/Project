@@ -2,6 +2,7 @@ package controllers;
 import dblibrary.project.csci230.*;
 import entity.*;
 import UI.*;
+import java.util.*;
 
 /**
  * @author nhoberg001
@@ -30,17 +31,17 @@ public class DatabaseController {
   /**
    * 
    */
-  public int editProfile(User user)
+  public int deactivateUser(Account2 user)
   {
     return this.dbLibrary.user_editUser(user.getUsername(), user.getFirst(), user.getLast(),
-                                 user.getPassword(), user.getType(), user.getStatus());
+                                 user.getPassword(), user.getType(), 'N');
   }
   
-  public void editUser()
+  public void editUser(Account2 user)
   {
-    this.dbLibrary.user_editUser("user" , "first", "last", "pass" , 'u', 'N');
+    this.dbLibrary.user_editUser(user.getUsername(), user.getFirst(), user.getLast(),
+    			user.getPassword(), user.getType(), user.getStatus());
   }
-  
   
   
   /**
@@ -57,11 +58,18 @@ public class DatabaseController {
    */
   public int addUniversity(University uni)
   {
+	  	if(this.getUniversity(uni.getName())!= null)
+	  	{
     return dbLibrary.university_addUniversity(uni.getName(), uni.getState(), uni.getLocation(), uni.getControl(), uni.getNumOfStudents(), 
                                               uni.getPercentFemale(), uni.getSatVerbal(), uni.getSatMath(), uni.getExpenses(), uni.getFinAid()
                                               , uni.getNumApplicants(), uni.getPerAdmitted(), uni.getPerEnrolled(),
-                                              uni.getAcademicScale(),  uni.getSocialScale(), uni.getLifeScale()); 
-  }
+	  	                                             uni.getAcademicScale(),  uni.getSocialScale(), uni.getLifeScale()); 
+	  	}
+	  	else
+	  	{
+	  		return 0;
+	  	}
+	  	}
   
   /**
    * 
@@ -89,9 +97,26 @@ public class DatabaseController {
   /**
    * 
    */
-  public void getUniversity(String uniName)
+  public University getUniversity(String uniName)
   {
+	University returnVal = null;
     String[][] unis = this.dbLibrary.university_getUniversities();
+    for(int i = 0; i < unis.length; i++)
+    {
+    	for(int j = 0; j < unis[i].length; j++)
+    	{
+    		if(uniName.equals(unis[i][0]))
+    				{
+    			returnVal = new University(unis[i][0], unis[i][1], unis[i][2], unis[i][3],
+    					 Integer.parseInt(unis[i][4]), Double.parseDouble(unis[i][5]),  Double.parseDouble(unis[i][6]),
+    					 Double.parseDouble(unis[i][7]), Double.parseDouble(unis[i][8]), Double.parseDouble(unis[i][9]),
+    					 Integer.parseInt(unis[i][10]), Double.parseDouble(unis[i][11]), Double.parseDouble(unis[i][12]),
+    					 Integer.parseInt(unis[i][13]), Integer.parseInt(unis[i][14]), Integer.parseInt(unis[i][15]));
+    				}			
+    	}
+    	
+    }
+    return returnVal;
     //for loop for finding the uni by the search criteria given i.e. params
   }
   
@@ -135,11 +160,18 @@ public class DatabaseController {
   }
   
   /**
-   * UC16
+   * UC16 removes a uni from database if no user has it saved
    */
   public int deleteUniversity(String uniName)
   {
+	  if((this.getUniversity(uniName)).getSavedStatus() == false)
+	  {
     return this.dbLibrary.university_deleteUniversity(uniName);
+	  }
+	  else
+	  {
+		return 0;  
+	  }
   }
   
   /**
@@ -156,13 +188,6 @@ public class DatabaseController {
   public int saveSchool(String username, String uniName)
   {
     return this.dbLibrary.user_saveSchool(username, uniName);
-  }
-  
-  //UC21
-  
-  public void editProfile()
-  {
-    this.dbLibrary.user_editUser("user", "first2" , "last" ,"pass" , 'u' , 'Y');
   }
   
 }
